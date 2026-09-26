@@ -45,13 +45,9 @@ except:
 	sys.exit(0)
 
 
-# load the recognition network
-net = imageNet(args.network, sys.argv)
 
-# note: to hard-code the paths to load a model, the following API can be used:
-#
-# net = imageNet(model="model/resnet18.onnx", labels="model/labels.txt", 
-#                 input_blob="input_0", output_blob="output_0")
+net = imageNet(model="model/resnet18.onnx", labels="model/labels.txt", 
+                 input_blob="input_0", output_blob="output_0")
 
 # create video sources & outputs
 input = videoSource(args.input, argv=sys.argv)
