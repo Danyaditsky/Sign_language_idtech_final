@@ -34,9 +34,7 @@ parser = argparse.ArgumentParser(description="Classify a live camera stream usin
 
 parser.add_argument("input", type=str, default="", nargs='?', help="URI of the input stream")
 parser.add_argument("output", type=str, default="", nargs='?', help="URI of the output stream")
-parser.add_argument("--network", type=str, default="googlenet", help="pre-trained model to load (see below for options)")
-parser.add_argument("--topK", type=int, default=1, help="show the topK number of class predictions (default: 1)")
-
+topK = 3
 try:
 	args = parser.parse_known_args()[0]
 except:
@@ -65,7 +63,7 @@ while True:
     # classify the image and get the topK predictions
     # if you only want the top class, you can simply run:
     #   class_id, confidence = net.Classify(img)
-    predictions = net.Classify(img, topK=args.topK)
+    predictions = net.Classify(img, topK=topK)
 
     # draw predicted class labels
     for n, (classID, confidence) in enumerate(predictions):
